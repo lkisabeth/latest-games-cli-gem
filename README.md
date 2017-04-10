@@ -1,8 +1,6 @@
-# NewGames
+# New::Games::Cli::Gem
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/new_games`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to the "New Games" cli gem! This program will scrape metacritic.com to provide you with a small database of the latest video games.  The content can be sorted by gaming platform (PS4, Xbox One, PC, etc.) and can display info such as metacritic review, description, release date, and genre. This gem will IGNORE games that do not yet have a metacritic review score posted!
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run: new-games after installing the gem.
 
 ## Development
 
@@ -38,4 +36,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/'lukey
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
