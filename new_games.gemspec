@@ -9,9 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Lucas Kisabeth'"]
   spec.email         = ["'lukey.mac@outlook.com'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Welcome to the "New Games" cli gem! This program will scrape metacritic.com to provide you with a small database of the latest video games.  The content can be sorted by gaming platform (PS4, Xbox One, PC, etc.) and can display info such as metacritic review, description, release date, and genre. This gem will IGNORE games that do not yet have a metacritic review score posted!}
+  spec.homepage      = "https://github.com/lukeymac/new-games-cli-gem"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
