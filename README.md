@@ -1,13 +1,13 @@
-# New::Games::Cli::Gem
+# Latest Video Games and Reviews
 
-Welcome to the "New Games" cli gem! This program will scrape metacritic.com to provide you with a small database of the latest video games.  The content can be sorted by gaming platform (PS4, Xbox One, PC, etc.) and can display info such as metacritic review, description, release date, and genre. This gem will IGNORE games that do not yet have a metacritic review score posted!
+Welcome to the latest_games CLI gem! This program will scrape metacritic.com to provide you with a small database of the latest video games.  The content can be sorted by gaming platform (PS4, Xbox One, PC, etc.) and can display info such as metacritic review, description, release date, and genre. This gem will IGNORE games that do not yet have a metacritic review score posted!
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'new_games'
+gem 'latest_games'
 ```
 
 And then execute:
@@ -16,11 +16,11 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install new_games
+    $ gem install latest_games
 
 ## Usage
 
-Run: new-games after installing the gem.
+Run: latest_games after installing the gem.
 
 ## Development
 
