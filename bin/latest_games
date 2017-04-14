@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/latest_games'
+
+LatestGames::CLI.new.call
