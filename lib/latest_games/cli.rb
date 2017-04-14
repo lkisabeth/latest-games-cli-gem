@@ -30,13 +30,35 @@ class LatestGames::CLI
         puts "Restarting..."
         sleep(2)
         start
-      elsif input.to_i > 0
+      elsif input.to_i == 1
         puts "LIST OF [PLATFORM] GAMES HERE"
+        @platform = LatestGames::PS4Game.new
+        list_games
       end
     end
     puts ""
     puts "Hope you found something you like!"
     puts "Have a great day! :D"
+  end
+
+  def list_games
+    puts ""
+    if @platform == LatestGames::PS4Game
+      puts "*************** Latest PS4 Games ***************"
+    elsif @platform == LatestGames::IOSGame
+      puts "*************** Latest iOS Games ***************"
+    elsif @platform == LatestGames::XboneGame
+      puts "************* Latest Xbox One Games ************"
+    elsif @platform == LatestGames::PCGame
+      puts "*************** Latest PC Games ****************"
+    elsif @platform == LatestGames::SwitchGame
+      puts "************* Latest Switch Games **************"
+    end
+    puts ""
+    @platform.all.each.with_index(1) {|game, i|
+      puts "#{i}) #{game.name}  #{game.metascore}"
+    }
+    puts ""
   end
 
 end
