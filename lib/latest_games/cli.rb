@@ -1,13 +1,13 @@
 class LatestGames::CLI
 
   def call
+    puts ""
+    puts "******** Latest Video Games and Reviews ********"
+    puts ""
     self.start
   end
 
   def list_platforms
-    puts ""
-    puts "******** Latest Video Games and Reviews ********"
-    puts ""
     puts "******===> Select a gaming platform: <===*******"
     puts ""
     puts "1) PS4"
