@@ -43,7 +43,9 @@ class LatestGames::PCGame
 
   private
     def self.scrape_pc_games
-
+      doc = Nokogiri::HTML(open('http://www.metacritic.com/browse/games/release-date/new-releases/pc', 'User-Agent'=>'chrome'))
+      names = doc.search("div[class='basic_stat product_title'] a")
+      names.collect{|title| new(title.text.strip, "http://www.metacritic.com#{title.attr("href")}")}
     end
 
     def doc

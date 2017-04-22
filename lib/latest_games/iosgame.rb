@@ -43,7 +43,9 @@ class LatestGames::IOSGame
 
   private
     def self.scrape_ios_games
-
+      doc = Nokogiri::HTML(open('http://www.metacritic.com/browse/games/release-date/new-releases/ios', 'User-Agent'=>'chrome'))
+      names = doc.search("div[class='basic_stat product_title'] a")
+      names.collect{|title| new(title.text.strip, "http://www.metacritic.com#{title.attr("href")}")}
     end
 
     def doc

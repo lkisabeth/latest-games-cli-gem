@@ -58,14 +58,39 @@ end
     puts ""
     if platform.is_a? LatestGames::PS4Game
       puts "*************** Latest PS4 Games ***************"
+      puts ""
+      LatestGames::PS4Game.all.each.with_index(1) {|game, i|
+        puts "#{i}. #{game.name}"
+      }
+      puts ""
     elsif platform.is_a? LatestGames::IOSGame
       puts "*************** Latest iOS Games ***************"
+      puts ""
+      LatestGames::IOSGame.all.each.with_index(1) {|game, i|
+        puts "#{i}. #{game.name}"
+      }
+      puts ""
     elsif platform.is_a? LatestGames::XboneGame
       puts "************* Latest Xbox One Games ************"
+      puts ""
+      LatestGames::XboneGame.all.each.with_index(1) {|game, i|
+        puts "#{i}. #{game.name}"
+      }
+      puts ""
     elsif platform.is_a? LatestGames::PCGame
       puts "*************** Latest PC Games ****************"
+      puts ""
+      LatestGames::PCGame.all.each.with_index(1) {|game, i|
+        puts "#{i}. #{game.name}"
+      }
+      puts ""
     elsif platform.is_a? LatestGames::SwitchGame
       puts "************* Latest Switch Games **************"
+      puts ""
+      LatestGames::SwitchGame.all.each.with_index(1) {|game, i|
+        puts "#{i}. #{game.name}"
+      }
+      puts ""
     end
     puts ""
     #platform.all.each.with_index(1) {|game, i|
