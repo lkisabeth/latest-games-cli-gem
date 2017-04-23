@@ -30,7 +30,7 @@ class LatestGames::PCGame
   end
 
   def metascore
-
+    @metascore = doc.xpath("//*[@id='main']/div/div[3]/div/div[2]/div[1]/div[1]/div/div/a/div/span").text
   end
 
   def publisher
@@ -49,7 +49,7 @@ class LatestGames::PCGame
     end
 
     def doc
-      @doc ||= Nokogiri::HTML(open(self.url))
+      @doc ||= Nokogiri::HTML(open(self.url, 'User-Agent'=>'chrome'))
     end
 
 end

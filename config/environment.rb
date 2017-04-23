@@ -1,6 +1,7 @@
 require 'pry'
 require 'open-uri'
 require 'nokogiri'
+require 'colorize'
 
 require_relative "../lib/latest_games/cli"
 require_relative "../lib/latest_games/ps4game"
