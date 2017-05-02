@@ -62,7 +62,13 @@ class LatestGames::CLI
       LatestGames::PS4Game.all[0..9].each.with_index(1) {|game, i|
         puts "#{i}. #{game.name}"
       }
+      puts ""
+      puts "Select a game to get more info:"
+      input = gets.strip
 
+      game = LatestGames::PS4Game.find(input.to_i)
+
+      select_game(game, "PS4")
     elsif platform.is_a? LatestGames::IOSGame
       puts "*************** Latest iOS Games ***************"
       puts ""
@@ -84,6 +90,12 @@ class LatestGames::CLI
         puts "#{i}. #{game.name}"
       }
       puts ""
+      puts "Select a game to get more info:"
+      input = gets.strip
+
+      game = LatestGames::XboneGame.find(input.to_i)
+
+      select_game(game, "Xbox One")
     elsif platform.is_a? LatestGames::PCGame
       puts "*************** Latest PC Games ****************"
       puts ""
@@ -91,6 +103,12 @@ class LatestGames::CLI
         puts "#{i}. #{game.name}"
       }
       puts ""
+      puts "Select a game to get more info:"
+      input = gets.strip
+
+      game = LatestGames::PCGame.find(input.to_i)
+
+      select_game(game, "PC")
     elsif platform.is_a? LatestGames::SwitchGame
       puts "************* Latest Switch Games **************"
       puts ""
@@ -98,6 +116,12 @@ class LatestGames::CLI
         puts "#{i}. #{game.name}"
       }
       puts ""
+      puts "Select a game to get more info:"
+      input = gets.strip
+
+      game = LatestGames::SwitchGame.find(input.to_i)
+
+      select_game(game, "Switch")
     end
   end
 
