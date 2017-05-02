@@ -4,6 +4,7 @@ class LatestGames::PCGame
   def initialize(name = nil, url = nil)
     @name = name
     @url = url
+    @also_on = "Only on PC"
   end
 
   def self.all

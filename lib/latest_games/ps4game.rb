@@ -4,6 +4,7 @@ class LatestGames::PS4Game
   def initialize(name = nil, url = nil)
     @name = name
     @url = url
+    @also_on = "Only on PS4"
   end
 
   def self.all

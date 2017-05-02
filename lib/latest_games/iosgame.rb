@@ -4,6 +4,7 @@ class LatestGames::IOSGame
   def initialize(name = nil, url = nil)
     @name = name
     @url = url
+    @also_on = "Only on iOS"
   end
 
   def self.all

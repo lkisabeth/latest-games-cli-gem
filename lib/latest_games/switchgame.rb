@@ -4,6 +4,7 @@ class LatestGames::SwitchGame
   def initialize(name = nil, url = nil)
     @name = name
     @url = url
+    @also_on = "Only on Nintendo Switch"
   end
 
   def self.all

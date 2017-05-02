@@ -4,6 +4,7 @@ class LatestGames::XboneGame
   def initialize(name = nil, url = nil)
     @name = name
     @url = url
+    @also_on = "Only on Xbox"
   end
 
   def self.all
