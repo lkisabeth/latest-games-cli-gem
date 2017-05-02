@@ -52,7 +52,7 @@ class LatestGames::CLI
     puts ""
     puts "Hope you found something you like!"
     puts "Have a great day! :D"
-end
+  end
 
   def list_games(platform)
     puts ""
@@ -62,13 +62,21 @@ end
       LatestGames::PS4Game.all[0..9].each.with_index(1) {|game, i|
         puts "#{i}. #{game.name}"
       }
-      puts ""
+
     elsif platform.is_a? LatestGames::IOSGame
       puts "*************** Latest iOS Games ***************"
       puts ""
       LatestGames::IOSGame.all[0..9].each.with_index(1) {|game, i|
           puts "#{i}. #{game.name}"
       }
+
+      puts ""
+      puts "Select a game to get more info:"
+      input = gets.strip
+
+      game = LatestGames::IOSGame.find(input.to_i)
+
+      select_game(game, "iOS")
     elsif platform.is_a? LatestGames::XboneGame
       puts "************* Latest Xbox One Games ************"
       puts ""
@@ -91,6 +99,12 @@ end
       }
       puts ""
     end
+  end
+
+  def select_game(game, platform)
+    puts ""
+    puts "--------- #{game.name} - #{platform} ---------"
+    puts ""
 
   end
 
