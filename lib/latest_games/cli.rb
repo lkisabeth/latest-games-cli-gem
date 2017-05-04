@@ -127,20 +127,20 @@ class LatestGames::CLI
 
   def select_game(game, platform)
     puts ""
-    puts "--------- #{game.name} - #{platform} ---------"
+    puts "------- #{game.name} - #{platform} -------"
     puts ""
     puts "Publisher: #{game.publisher}"
     puts "Release Date: #{game.release_date}"
     puts "Also On: #{game.also_on}"
     puts ""
-    if game.metascore.to_i >= 75
+    if game.metascore.to_i == 0
+      puts "Metascore: TBD"
+    elsif game.metascore.to_i >= 75
       puts "Metascore: #{game.metascore.green}"
     elsif game.metascore.to_i < 75 && game.metascore.to_i >= 50
       puts "Metascore: #{game.metascore.yellow}"
     elsif game.metascore.to_i < 50
       puts "Metascore: #{game.metascore.red}"
-    else
-      puts "Metascore: TBD"
     end
     puts ""
 

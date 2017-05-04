@@ -23,23 +23,23 @@ class LatestGames::XboneGame
   end
 
   def summary
-
+    @summary ||= doc.xpath("//*[@id='main']/div/div[3]/div/div[2]/div[2]/div[1]/ul/li/span[2]/span/span[2]").text.strip
   end
 
   def release_date
-
+    @release_date ||= doc.xpath("//*[@id='main']/div/div[1]/div[2]/ul/li[2]/span[2]").text.strip
   end
 
   def metascore
-    @metascore = doc.xpath("//*[@id='main']/div/div[3]/div/div[2]/div[1]/div[1]/div/div/a/div/span").text
+    @metascore ||= doc.xpath("//*[@id='main']/div/div[3]/div/div[2]/div[1]/div[1]/div/div/a/div/span").text.strip
   end
 
   def publisher
-
+    @publisher ||= doc.xpath("//*[@id='main']/div/div[1]/div[2]/ul/li[1]/span[2]/a/span").text.strip
   end
 
   def also_on
-
+    @also_on ||= doc.xpath("//*[@id='main']/div/div[1]/div[2]/ul/li[3]/span[2]").text.strip
   end
 
   private
