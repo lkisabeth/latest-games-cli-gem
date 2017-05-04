@@ -1,6 +1,6 @@
 # Latest Video Games and Reviews
 
-Welcome to the latest_games CLI gem! This program will scrape metacritic.com to provide you with a small database of the latest video games.  The content can be sorted by gaming platform (PS4, Xbox One, PC, etc.) and can display info such as metacritic review, description, release date, and genre. This gem will IGNORE games that do not yet have a metacritic review score posted!
+Welcome to the latest_games CLI gem! This program will scrape metacritic.com to provide you with a small database of the latest video games.  The content can be sorted by gaming platform (PS4, Xbox One, PC, etc.) and can display info such as metascore, publisher, release date, and a summary.
 
 ## Installation
 

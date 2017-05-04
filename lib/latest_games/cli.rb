@@ -15,7 +15,7 @@ class LatestGames::CLI
     puts "4. PC"
     puts "5. iOS"
     puts "-----------------------------------------"
-    puts "(To quit, enter 'exit' at any time..)".red
+    puts "(To quit, enter 'exit' at any time..)".color(:red)
   end
 
   def start
@@ -143,11 +143,11 @@ class LatestGames::CLI
     if game.metascore.to_i == 0
       puts "Metascore: TBD"
     elsif game.metascore.to_i >= 75
-      puts "Metascore: #{game.metascore.green}"
+      puts "Metascore: #{game.metascore.color(:green)}"
     elsif game.metascore.to_i < 75 && game.metascore.to_i >= 50
-      puts "Metascore: #{game.metascore.yellow}"
+      puts "Metascore: #{game.metascore.color(:yellow)}"
     elsif game.metascore.to_i < 50
-      puts "Metascore: #{game.metascore.red}"
+      puts "Metascore: #{game.metascore.color(:red)}"
     end
     puts ""
     if game.summary == ""
