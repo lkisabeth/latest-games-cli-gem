@@ -4,8 +4,6 @@ class LatestGames::PCGame
   def initialize(name = nil, url = nil)
     @name = name
     @url = url
-    @summary = "No Summary Provided"
-    @also_on = "Only on PC"
   end
 
   def self.all
@@ -24,7 +22,7 @@ class LatestGames::PCGame
   end
 
   def summary
-    @summary = doc.xpath("//*[@id='main']/div/div[3]/div/div[2]/div[2]/div[1]/ul/li/span[2]/span").text
+    @summary ||= doc.xpath("//*[@id='main']/div/div[3]/div/div[2]/div[2]/div[1]/ul/li/span[2]/span").text
   end
 
   def release_date

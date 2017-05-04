@@ -8,14 +8,13 @@ class LatestGames::CLI
   end
 
   def list_platforms
-    puts "******===> Select a gaming platform: <===*******"
-    puts ""
+    puts "------> Select a gaming platform: <------"
     puts "1. PS4"
     puts "2. Xbox One"
     puts "3. Switch"
     puts "4. PC"
     puts "5. iOS"
-    puts ""
+    puts "-----------------------------------------"
     puts "(To quit, enter 'exit' at any time..)".red
   end
 
@@ -23,6 +22,7 @@ class LatestGames::CLI
     self.list_platforms
     input = nil
     until input == "exit"
+      input = nil
       puts ""
       puts "Select a platform:"
       input = gets.strip
@@ -50,78 +50,81 @@ class LatestGames::CLI
       end
     end
     puts ""
+    puts "------------"
     puts "Hope you found something you like!"
     puts "Have a great day! :D"
   end
 
   def list_games(platform)
-    puts ""
-    if platform.is_a? LatestGames::PS4Game
-      puts "*************** Latest PS4 Games ***************"
+    input = nil
+    until input == "exit"
       puts ""
-      LatestGames::PS4Game.all[0..9].each.with_index(1) {|game, i|
-        puts "#{i}. #{game.name}"
-      }
-      puts ""
-      puts "Select a game to get more info:"
-      input = gets.strip
-
-      game = LatestGames::PS4Game.find(input.to_i)
-
-      select_game(game, "PS4")
-    elsif platform.is_a? LatestGames::IOSGame
-      puts "*************** Latest iOS Games ***************"
-      puts ""
-      LatestGames::IOSGame.all[0..9].each.with_index(1) {|game, i|
+      if platform.is_a? LatestGames::PS4Game
+        puts "*************** Latest PS4 Games ***************"
+        puts ""
+        wait_cursor(1)
+        LatestGames::PS4Game.all[0..9].each.with_index(1) {|game, i|
           puts "#{i}. #{game.name}"
-      }
+        }
+        puts ""
+        puts "Select a game to get more info:"
+        input = gets.strip
+        game = LatestGames::PS4Game.find(input.to_i)
+        select_game(game, "PS4")
 
-      puts ""
-      puts "Select a game to get more info:"
-      input = gets.strip
+      elsif platform.is_a? LatestGames::IOSGame
+        puts "*************** Latest iOS Games ***************"
+        puts ""
+        wait_cursor(1)
+        LatestGames::IOSGame.all[0..9].each.with_index(1) {|game, i|
+            puts "#{i}. #{game.name}"
+        }
+        puts ""
+        puts "Select a game to get more info:"
+        input = gets.strip
+        game = LatestGames::IOSGame.find(input.to_i)
+        select_game(game, "iOS")
 
-      game = LatestGames::IOSGame.find(input.to_i)
+      elsif platform.is_a? LatestGames::XboneGame
+        puts "************* Latest Xbox One Games ************"
+        puts ""
+        wait_cursor(1)
+        LatestGames::XboneGame.all[0..9].each.with_index(1) {|game, i|
+          puts "#{i}. #{game.name}"
+        }
+        puts ""
+        puts "Select a game to get more info:"
+        input = gets.strip
+        game = LatestGames::XboneGame.find(input.to_i)
+        select_game(game, "Xbox One")
 
-      select_game(game, "iOS")
-    elsif platform.is_a? LatestGames::XboneGame
-      puts "************* Latest Xbox One Games ************"
-      puts ""
-      LatestGames::XboneGame.all[0..9].each.with_index(1) {|game, i|
-        puts "#{i}. #{game.name}"
-      }
-      puts ""
-      puts "Select a game to get more info:"
-      input = gets.strip
+      elsif platform.is_a? LatestGames::PCGame
+        puts "*************** Latest PC Games ****************"
+        puts ""
+        wait_cursor(1)
+        LatestGames::PCGame.all[0..9].each.with_index(1) {|game, i|
+          puts "#{i}. #{game.name}"
+        }
+        puts ""
+        puts "Select a game to get more info:"
+        input = gets.strip
+        game = LatestGames::PCGame.find(input.to_i)
+        select_game(game, "PC")
 
-      game = LatestGames::XboneGame.find(input.to_i)
+      elsif platform.is_a? LatestGames::SwitchGame
+        puts "************* Latest Switch Games **************"
+        puts ""
+        wait_cursor(1)
+        LatestGames::SwitchGame.all[0..9].each.with_index(1) {|game, i|
+          puts "#{i}. #{game.name}"
+        }
+        puts ""
+        puts "Select a game to get more info:"
+        input = gets.strip
+        game = LatestGames::SwitchGame.find(input.to_i)
+        select_game(game, "Switch")
 
-      select_game(game, "Xbox One")
-    elsif platform.is_a? LatestGames::PCGame
-      puts "*************** Latest PC Games ****************"
-      puts ""
-      LatestGames::PCGame.all[0..9].each.with_index(1) {|game, i|
-        puts "#{i}. #{game.name}"
-      }
-      puts ""
-      puts "Select a game to get more info:"
-      input = gets.strip
-
-      game = LatestGames::PCGame.find(input.to_i)
-
-      select_game(game, "PC")
-    elsif platform.is_a? LatestGames::SwitchGame
-      puts "************* Latest Switch Games **************"
-      puts ""
-      LatestGames::SwitchGame.all[0..9].each.with_index(1) {|game, i|
-        puts "#{i}. #{game.name}"
-      }
-      puts ""
-      puts "Select a game to get more info:"
-      input = gets.strip
-
-      game = LatestGames::SwitchGame.find(input.to_i)
-
-      select_game(game, "Switch")
+      end
     end
   end
 
@@ -131,7 +134,11 @@ class LatestGames::CLI
     puts ""
     puts "Publisher: #{game.publisher}"
     puts "Release Date: #{game.release_date}"
-    puts "Also On: #{game.also_on}"
+    if game.also_on == ""
+      puts "Only on #{platform}"
+    else
+      puts "Also On: #{game.also_on}"
+    end
     puts ""
     if game.metascore.to_i == 0
       puts "Metascore: TBD"
@@ -143,7 +150,29 @@ class LatestGames::CLI
       puts "Metascore: #{game.metascore.red}"
     end
     puts ""
-    puts "Summary: #{game.summary[0...500]}..." 
+    if game.summary == ""
+      puts "No Summary Provided"
+    else
+      puts "Summary: #{game.summary[0...500]}.."
+    end
+    puts ""
+    puts "--------------------"
+    puts ""
+    puts "Would you like to check out another #{platform} game? (y/n)"
+    input = gets.strip
+    if input.downcase == "n" || input.downcase == "no"
+      self.start
+    end
+  end
+
+  def wait_cursor(seconds,fps=10)
+    chars = %w[| / - \\]
+    delay = 1.0/fps
+    (seconds*fps).round.times{ |i|
+      print "Loading.. " + chars[i % chars.length]
+      sleep delay
+      print "\b\b\b\b\b\b\b\b\b\b\b"
+    }
   end
 
 end
