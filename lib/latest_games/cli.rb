@@ -143,7 +143,7 @@ class LatestGames::CLI
       puts "Metascore: #{game.metascore.red}"
     end
     puts ""
-
+    puts "Summary: #{game.summary[0...500]}..." 
   end
 
 end
