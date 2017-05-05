@@ -54,7 +54,8 @@ class LatestGames::CLI
 
   def list_games(platform)
     input = nil
-      puts ""
+    puts ""
+    until input == "exit"
       if platform.is_a? LatestGames::PS4Game
         puts "*************** Latest PS4 Games ***************"
         puts ""
@@ -68,8 +69,9 @@ class LatestGames::CLI
         game = LatestGames::PS4Game.find(input.to_i)
         if input != "exit"
           select_game(game, "PS4")
+        elsif input == "exit"
+          end_program
         end
-        end_program
 
       elsif platform.is_a? LatestGames::IOSGame
         puts "*************** Latest iOS Games ***************"
@@ -84,8 +86,9 @@ class LatestGames::CLI
         game = LatestGames::IOSGame.find(input.to_i)
         if input != "exit"
           select_game(game, "iOS")
+        elsif input == "exit"
+          end_program
         end
-        end_program
 
       elsif platform.is_a? LatestGames::XboneGame
         puts "************* Latest Xbox One Games ************"
@@ -100,8 +103,9 @@ class LatestGames::CLI
         game = LatestGames::XboneGame.find(input.to_i)
         if input != "exit"
           select_game(game, "Xbox One")
+        elsif input == "exit"
+          end_program
         end
-        end_program
 
       elsif platform.is_a? LatestGames::PCGame
         puts "*************** Latest PC Games ****************"
@@ -116,8 +120,9 @@ class LatestGames::CLI
         game = LatestGames::PCGame.find(input.to_i)
         if input != "exit"
           select_game(game, "PC")
+        elsif input == "exit"
+          end_program
         end
-        end_program
 
       elsif platform.is_a? LatestGames::SwitchGame
         puts "************* Latest Switch Games **************"
@@ -132,21 +137,23 @@ class LatestGames::CLI
         game = LatestGames::SwitchGame.find(input.to_i)
         if input != "exit"
           select_game(game, "Switch")
+        elsif input == "exit"
+          end_program
         end
-        end_program
 
       end
+    end
     end_program
   end
 
-  def select_game(game, platform)
+  def select_game(game, platformname)
     puts ""
-    puts "------- #{game.name} - #{platform} -------"
+    puts "------- #{game.name} - #{platformname} -------"
     puts ""
     puts "Publisher: #{game.publisher}"
     puts "Release Date: #{game.release_date}"
     if game.also_on == ""
-      puts "Only on #{platform}"
+      puts "Only on #{platformname}"
     else
       puts "Also On: #{game.also_on}"
     end
@@ -169,7 +176,7 @@ class LatestGames::CLI
     puts ""
     puts "--------------------"
     puts ""
-    puts "Would you like to check out another #{platform} game? (y/n)"
+    puts "Would you like to check out another #{platformname} game? (y/n)"
     input = gets.strip
     if input.downcase == "n" || input.downcase == "no"
       self.start
