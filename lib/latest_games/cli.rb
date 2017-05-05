@@ -49,15 +49,11 @@ class LatestGames::CLI
         start
       end
     end
-    puts ""
-    puts "------------"
-    puts "Hope you found something you like!"
-    puts "Have a great day! :D"
+    end_program
   end
 
   def list_games(platform)
     input = nil
-    until input == "exit"
       puts ""
       if platform.is_a? LatestGames::PS4Game
         puts "*************** Latest PS4 Games ***************"
@@ -70,7 +66,10 @@ class LatestGames::CLI
         puts "Select a game to get more info:"
         input = gets.strip
         game = LatestGames::PS4Game.find(input.to_i)
-        select_game(game, "PS4")
+        if input != "exit"
+          select_game(game, "PS4")
+        end
+        end_program
 
       elsif platform.is_a? LatestGames::IOSGame
         puts "*************** Latest iOS Games ***************"
@@ -83,7 +82,10 @@ class LatestGames::CLI
         puts "Select a game to get more info:"
         input = gets.strip
         game = LatestGames::IOSGame.find(input.to_i)
-        select_game(game, "iOS")
+        if input != "exit"
+          select_game(game, "iOS")
+        end
+        end_program
 
       elsif platform.is_a? LatestGames::XboneGame
         puts "************* Latest Xbox One Games ************"
@@ -96,7 +98,10 @@ class LatestGames::CLI
         puts "Select a game to get more info:"
         input = gets.strip
         game = LatestGames::XboneGame.find(input.to_i)
-        select_game(game, "Xbox One")
+        if input != "exit"
+          select_game(game, "Xbox One")
+        end
+        end_program
 
       elsif platform.is_a? LatestGames::PCGame
         puts "*************** Latest PC Games ****************"
@@ -109,7 +114,10 @@ class LatestGames::CLI
         puts "Select a game to get more info:"
         input = gets.strip
         game = LatestGames::PCGame.find(input.to_i)
-        select_game(game, "PC")
+        if input != "exit"
+          select_game(game, "PC")
+        end
+        end_program
 
       elsif platform.is_a? LatestGames::SwitchGame
         puts "************* Latest Switch Games **************"
@@ -122,10 +130,13 @@ class LatestGames::CLI
         puts "Select a game to get more info:"
         input = gets.strip
         game = LatestGames::SwitchGame.find(input.to_i)
-        select_game(game, "Switch")
+        if input != "exit"
+          select_game(game, "Switch")
+        end
+        end_program
 
       end
-    end
+    end_program
   end
 
   def select_game(game, platform)
@@ -162,6 +173,8 @@ class LatestGames::CLI
     input = gets.strip
     if input.downcase == "n" || input.downcase == "no"
       self.start
+    elsif input.downcase == "exit"
+      end_program
     end
   end
 
@@ -173,6 +186,14 @@ class LatestGames::CLI
       sleep delay
       print "\b\b\b\b\b\b\b\b\b\b\b"
     }
+  end
+
+  def end_program
+    puts ""
+    puts "------------"
+    puts "Hope you found something you like!"
+    puts "Have a great day! :D"
+    exit
   end
 
 end
